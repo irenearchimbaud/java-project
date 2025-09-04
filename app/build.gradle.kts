@@ -6,6 +6,7 @@
  */
 
 plugins {
+    java 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
 }
@@ -23,6 +24,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -34,10 +38,9 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "com.isitech.bibliotheque.Main"
+    mainClass = "com.isitech.bibliotheque.App"
 }
 
-tasks.named<Test>("test") {
-    // Use JUnit Platform for unit tests.
+tasks.test {
     useJUnitPlatform()
 }
